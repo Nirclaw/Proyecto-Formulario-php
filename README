@@ -1,0 +1,20 @@
+<?php
+   
+   function post(){
+   
+    $credenciales["http"]["method"] = "POST";
+    $credenciales["http"]["header"] = "Content-type: application/json";
+    $data = [
+        "nombre"=> "Nicolas",
+        "apelldio"=> "Caicedo",
+        "edad"=> 23
+    ];
+    $data = json_encode($data);
+    $credenciales["http"]["content"] = $data;
+    $config = stream_context_create($credenciales);
+
+    $_DATA = file_get_contents("https://6480e394f061e6ec4d49ff43.mockapi.io/Informacion", false, $config);
+    print_r($_DATA);
+ 
+   };
+  
