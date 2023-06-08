@@ -1,30 +1,165 @@
-*{
+* {
     border: 0px;
     padding: 0px;
 }
-form{
-margin-top: 3%;
-margin-left: 10%;
-margin-right: 10%;
+
+form {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-form #encabezado{
-    padding: 2%;
-    width: 100%;
-    height: 300px;
-    display: grid;
-    gap: 100px;
-    grid-template-columns: 50% 50%;
-    background-color: bisque;
-    grid-template-rows: repeat(3,10%);
+#encabezado {
+    border: solid black 1px;
 }
-input{
-    width: 50%;
+
+#botonera {
+    border: solid black 1px;
+}
+
+form #encabezado {
+    padding: 2%;
+    width: 70%;
+    height: 250px;
+    display: grid;
+    gap: 80px;
+    margin-left: 10%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(3, 10%);
+}
+
+form #encabezado input {
+    width: 70%;
+    margin-left: 4%;
+    margin-top: 0.1%;
+    border: solid black 1px;
+    height: 50px;
+}
+
+img {
+    width: 70%;
+    height: 320%;
+}
+
+form #botonera {
+    margin-top: 1%;
+    padding: 2%;
+    width: 70%;
+    height: 220px;
+    margin-left: 10%;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(3, 10%);
+}
+
+form #botonera input {
+    height: 50px;
+    width: 70%;
+    height: 150%;
     margin-left: 5%;
     margin-top: 0.1%;
     border: solid black 1px;
 }
-img{
-    width: 500px;
-    height: 100px;
+
+form #botonera #Horario {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+form #botonera #botones {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+form #botonera #cedula {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+form #botonera #trainer {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+form #botonera #botones {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 50px);
+    gap: 10px;
+    margin-left: 30%;
+    margin-right: 70%;
+}
+
+#borrar {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: transparent;
+    border: solid black 1px;
+
+
+}
+
+#guardar {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: transparent;
+    border: solid black 1px;
+}
+
+#editar {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: transparent;
+    border: solid black 1px;
+
+}
+
+#buscar {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: transparent;
+    border: solid black 1px;
+}
+
+table{
+border: 1px solid black;
+width: 75%;
+margin-left: 10%;
+}
+.tabla {
+    display: flex;
+    flex-direction: column;
+}
+
+table th{
+border: 1px solid black;
+}
+
+
+table thead th{
+    font-size: 25px;
+    height: 40px;
+
+}
+
+table tbody td{
+    font-size: 15px;
+    height: 40px;
+    text-align: center;
+    border: solid black 1px;
+}
+
+
+#mostrar{
+    background-color: transparent;
+    font-size: 20px;
+   
+}
+.btonmostrar{
+border: none;
 }
