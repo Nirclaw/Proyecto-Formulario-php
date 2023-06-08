@@ -1,12 +1,36 @@
 <?php
+$baseUrl = 'https://648233f729fa1c5c5032b72c.mockapi.io/';
+function obtenerUsuarios()
+{
+    global $baseUrl;
 
+    $url = $baseUrl . "usuarios";
 
+    $result = file_get_contents($url);
 
+    if ($result) {
+        $usuarios = json_decode($result,   true );
 
+        foreach ($usuarios as $usuario) {
+            echo "<tr>
+            <td id='nombre'>". $usuario["nombre"] . "</td>
+            <td id='apellido'>".$usuario["apellido"] ."</td>
+            <td id='direccion'>".$usuario["direccion"]." </td>
+            <td id='Edad'>". $usuario["edad"] ." </td>
+            <td id='Email'>". $usuario["email"] ." </td>
+            <td id='Hora/entrada'>".$usuario["hora"] ." </td>
+            <td id='Team'>". $usuario["team"] ." </td>
+            <td id='Trainer'>". $usuario["trainer"] . "</td>
+            <td id='Cedula'>". $usuario["cedula"] ." </td>
+            <td class='btonmostrar'><button id='mostrar'>&#9650;</button></td>
+            </tr>";
+        }
+    } else {
+        echo "No se encontraron usuarios";
+    }
 
-
-
-
+}
+echo $_POST['borrar'];
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +47,7 @@
 <body>
 
     <div class="contenedor">
-        <form action="">
+        <form action="index.php" method="POST">
             <div id="encabezado">
                 <input type="text" name="nombre" id="nombre" placeholder="nombre">
                 <img src="" alt="logo" srcset="https://media.licdn.com/dms/image/D563DAQFas8vErYi8iA/image-scale_191_1128/0/1681268367946?e=1686783600&v=beta&t=AxWQwwzzQ5dfcbg7RTf3_LAWFZUaEMWYY8pRfOr3MlM">
@@ -40,10 +64,10 @@
                 <input type="text" name="trainer  " id="trainer" placeholder="Trainer">
                 <input type="number" name="cedula" id="cedula" placeholder="cedula">
                 <div id="botones">
-                    <button id="borrar">&#10060;</button>
-                    <button id="guardar">&#10004;</button>
-                    <button id="editar">&#9997;</button>
-                    <button id="buscar">&#127859;</button>
+                    <button id="borrar" name="borrar" value="borrar">&#10060;</button>
+                    <button id="guardar" name="guardar" value="guardar">&#10004;</button>
+                    <button id="editar" name="editar" value="editar">&#9997;</button>
+                    <button id="buscar" name="buscar" value="buscar">&#127859;</button>
                 </div>
             </div>
             <div class="tabla">
@@ -64,19 +88,10 @@
                     </thead>
 
                     <tbody id="mostrar">
-                        <tr>
-                            <td id="nombre">Nicolas</td>
-                            <td id="apellido">caicedo</td>
-                            <td id="direccion">direccion </td>
-                            <td id="Edad">Edad </td>
-                            <td id="Email">Email </td>
-                            <td id="Hora/entrada">Hora/entrada </td>
-                            <td id="Team">Team </td>
-                            <td id="Trainer">Trainer </td>
-                            <td id="Cedula">Cedula </td>
-                            <td class="btonmostrar"><button id="mostrar">&#9650;</button></td>
-                        </tr>
-                        
+                        <?php
+                       echo obtenerUsuarios();
+                        ?>
+
                     </tbody>
 
 
