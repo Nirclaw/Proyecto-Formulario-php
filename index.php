@@ -8,7 +8,7 @@ function crearUsuario($datos)
 
     global $baseUrl;
     $url = $baseUrl . "usuarios";
-    var_dump($datos);
+    
     //configuracion para realizar un POST
     $options = array(
         "http" => array(
@@ -51,8 +51,7 @@ function obtenerUsuarios()
             <td id='Hora/entrada'>" . $usuario["hora"] . " </td>
             <td id='Team'>" . $usuario["team"] . " </td>
             <td id='Trainer'>" . $usuario["trainer"] . "</td>
-            <td id='Cedula'>" . $usuario["cedula"] . " </td>
-            <td class='btonmostrar'><button id='mostrar'>&#9650;</button></td>
+            <td class='btonmostrar'><button id='mostrar' name='btn' value=" . $usuario["cedula"] . ">&#9650;</button></td>
             </tr>";
         }
     } else {
@@ -131,8 +130,6 @@ function Editarcliente($cedula)
             "content" => json_encode($cedula)
         )
     );
-    var_dump($options);
-
     $context = stream_context_create($options);
 
     $enviar = file_get_contents($url, false, $context);
@@ -149,6 +146,7 @@ function Editarcliente($cedula)
 
 if (empty($_POST['btn'])) {
 } else {
+
     switch ($_POST['btn']) {
 
         case 'borrar':
@@ -167,7 +165,7 @@ if (empty($_POST['btn'])) {
             }
             break;
         case 'editar':
-            echo  $_POST['btn'];
+            
             if (empty($_POST['cedula'])) {
                 echo "Debes completar todos los campos";
             } else {
@@ -182,6 +180,10 @@ if (empty($_POST['btn'])) {
             } else {
                 $nombretraer =  buscarid($_POST['cedula']);
             }
+            break;
+        case $_POST['btn'] != 0:
+
+            $nombretraer =  buscarid($_POST['btn']);
             break;
     }
 }
@@ -241,7 +243,7 @@ if (empty($_POST['btn'])) {
                             <th>Hora/entrada</th>
                             <th>Team</th>
                             <th>Trainer</th>
-                            <th>Cedula</th>
+
                         </tr>
                     </thead>
 
